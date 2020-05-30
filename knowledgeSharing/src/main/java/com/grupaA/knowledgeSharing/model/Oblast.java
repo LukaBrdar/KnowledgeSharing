@@ -16,4 +16,21 @@ public class Oblast {
     @JoinColumn(name = "oblast_id")
     private Set<Podoblast> podoblasti;
 
+    public Long getOblastId()
+    {
+        return oblastId;
+    }
+    public String getNaziv()
+    {
+        return naziv;
+    }
+    public void setOblastId(Long oblastId)
+    {
+        this.oblastId = oblastId;
+    }
+    public void setNaziv(String naziv)
+    {
+        this.naziv = naziv;
+    }
+
 }

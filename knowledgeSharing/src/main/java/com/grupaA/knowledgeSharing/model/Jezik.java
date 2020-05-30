@@ -15,4 +15,20 @@ public class Jezik {
     @ManyToMany(mappedBy = "poznatiJezici")
     Set<Korisnik> korisnici;
 
+    public Long getJezikId()
+    {
+        return jezikId;
+    }
+    public String getNaziv()
+    {
+        return naziv;
+    }
+    public  void setJezikId(Long jezikId)
+    {
+        this.jezikId=jezikId;
+    }
+    public void setNaziv(String naziv)
+    {
+        this.naziv=naziv;
+    }
 }

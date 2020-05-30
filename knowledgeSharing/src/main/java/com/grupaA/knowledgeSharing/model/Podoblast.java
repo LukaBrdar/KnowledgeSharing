@@ -8,7 +8,7 @@ import java.util.Set;
 public class Podoblast {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long podoblastiId;
+    private Long podoblastId;
     @Column(name = "NazivPodoblasti", length = 50, nullable = true, unique = false)
     private String nazivPodoblasti;
 
@@ -21,4 +21,21 @@ public class Podoblast {
 
     @ManyToMany(mappedBy = "podoblastiZaPredavanje")
     Set<Korisnik> korisniciPredavanje;
+
+    public Long getPodoblastId()
+    {
+        return podoblastId;
+    }
+    public String getNazivPodoblasti()
+    {
+        return nazivPodoblasti;
+    }
+    public void setPodoblastId(Long podoblastId)
+    {
+        this.podoblastId = podoblastId;
+    }
+    public void setNazivPodoblasti(String nazivPodoblasti)
+    {
+        this.nazivPodoblasti = nazivPodoblasti;
+    }
 }

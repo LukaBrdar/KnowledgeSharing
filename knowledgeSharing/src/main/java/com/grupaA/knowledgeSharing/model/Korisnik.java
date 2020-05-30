@@ -43,4 +43,62 @@ public class Korisnik {
             inverseJoinColumns = @JoinColumn(name = "podoblast_id"))
     Set<Podoblast> podoblastiZaPredavanje;
 
+    public Long getKorisnikId()
+    {
+        return korisnikId;
+    }
+    public String getIme()
+    {
+        return ime;
+    }
+    public String getPrezime()
+    {
+        return prezime;
+    }
+    public String getEmail()
+    {
+        return email;
+    }
+    public String getSifra()
+    {
+        return sifra;
+    }
+    public String getBiografija()
+    {
+        return biografija;
+    }
+    public Boolean getAdminStatus()
+    {
+        return adminStatus;
+    }
+    //Setters:
+    public void setKorisnikId(Long korisnikId)
+    {
+        this.korisnikId = korisnikId;
+    }
+    public void setIme(String ime)
+    {
+        this.ime = ime;
+    }
+    public void setPrezime(String prezime)
+    {
+        this.prezime = prezime;
+    }
+    public void setEmail(String email)
+    {
+        this.email = email;
+    }
+    public void setSifra(String sifra)
+    {
+        this.sifra = sifra;
+    }
+    public void setBiografija(String biografija)
+    {
+        this.biografija = biografija;
+    }
+    public void setAdminStatus(Boolean adminStatus)
+    {
+        this.adminStatus = adminStatus;
+    }
+
 }
