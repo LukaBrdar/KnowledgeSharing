@@ -1,2 +1,0 @@
-# KnowledgeSharing
-Praksa, Java Spring
