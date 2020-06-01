@@ -20,6 +20,8 @@ public class KorisnikService implements IKorisnikService
         return korisnikRepository.findById(id);
     }
 
+
+
     public List<Korisnik> findAll()
     {
         return this.korisnikRepository.findAll();

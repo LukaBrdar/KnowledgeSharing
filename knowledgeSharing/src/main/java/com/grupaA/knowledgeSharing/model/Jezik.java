@@ -6,8 +6,8 @@ import java.util.Set;
 @Entity
 @Table(name="JEZIK")
 public class Jezik {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "jezik_id", unique = true)
     private Long jezikId;
     @Column(name="Naziv", length=50, nullable=true, unique=false)
     private String naziv;

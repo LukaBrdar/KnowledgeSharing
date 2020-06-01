@@ -4,19 +4,25 @@ import com.grupaA.knowledgeSharing.model.Korisnik;
 import com.grupaA.knowledgeSharing.services.KorisnikService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
 @Controller
+@RequestMapping("/korisnici")
 public class KorisnikController
 {
     @Autowired
     private KorisnikService korisnikService;
 
-    @GetMapping("/korisnici")
-    List<Korisnik> all()
+
+    @RequestMapping()
+    public String index(Model model)
     {
-        return this.korisnikService.findAll();
+        List<Korisnik> korisnici = this.korisnikService.findAll();
+        model.addAttribute("korisnici", korisnici);
+        return "index";
     }
 }

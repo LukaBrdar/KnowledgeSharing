@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<div class="container">
+    <div th:switch="${korisnici}">
+        <h2 th:case="null">Nema korisnika</h2>
+        <div th:case="*">
+            <h2>Korisnici</h2>
+            <table>
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Ime</th>
+                    <th>Prezime</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="korisnik : ${korisnici}">
+                    <td th:text="${korisnik.korisnikId}"></td>
+                    <td th:text="${korisnik.Ime}"></td>
+                    <td th:text="${korisnik.Prezime}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</html>

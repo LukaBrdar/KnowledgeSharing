@@ -1,14 +1,17 @@
 package com.grupaA.knowledgeSharing.model;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
 @Table(name = "KORISNIK")
 public class Korisnik {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "korisnik_id", unique = true)
     private Long korisnikId;
+
     @Column(name = "Ime", length = 50, nullable = true, unique = false)
     private String ime;
     @Column(name = "Prezime", length = 50, nullable = true, unique = false)
