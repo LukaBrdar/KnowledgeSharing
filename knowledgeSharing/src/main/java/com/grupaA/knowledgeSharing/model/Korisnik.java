@@ -18,7 +18,7 @@ public class Korisnik {
     private String prezime;
     @Column(name = "Email", length = 50, nullable = false, unique = true)
     private String email;
-    @Column(name = "Sifra", length = 50, nullable = false, unique = false)
+    @Column(name = "Sifra", length = 120, nullable = false, unique = false)
     private String sifra;
     @Column(name = "Biografija", length = 4000, nullable = true, unique = false)
     private String biografija;
@@ -45,6 +45,8 @@ public class Korisnik {
             joinColumns = @JoinColumn(name = "korisnik_id"),
             inverseJoinColumns = @JoinColumn(name = "podoblast_id"))
     Set<Podoblast> podoblastiZaPredavanje;
+
+
 
     public Long getKorisnikId()
     {
@@ -104,4 +106,15 @@ public class Korisnik {
         this.adminStatus = adminStatus;
     }
 
+    public Korisnik(Long korisnikId, String ime, String prezime, String email, String sifra, String biografija, Boolean adminStatus){
+        this.korisnikId = korisnikId;
+        this.ime = ime;
+        this.prezime = prezime;
+        this.email = email;
+        this.sifra = sifra;
+        this.biografija = biografija;
+        this.adminStatus = adminStatus;
+    }
+
+    public Korisnik(){}
 }
