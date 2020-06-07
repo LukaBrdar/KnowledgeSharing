@@ -6,7 +6,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.grupaA.knowledgeSharing.repositories.KorisnikRepository;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.constraints.Email;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,6 +21,7 @@ public class KorisnikService implements IKorisnikService
     @Autowired
     BCryptPasswordEncoder passwordEncoder;
 
+    ModelAndView modelAndView = new ModelAndView();
 
     @Override
     public Optional<Korisnik> findById(Long id)
@@ -40,6 +44,12 @@ public class KorisnikService implements IKorisnikService
 
     public boolean postojiKorisnik(Korisnik korisnik)
     {
-        return false;
+        boolean korisnikVecPostoji=false;
+        Korisnik postojeciKorisnik = korisnikRepository.findByEmail(korisnik.getEmail());
+        if(postojeciKorisnik!=null)
+        {
+            korisnikVecPostoji=true;
+        }
+        return korisnikVecPostoji;
     }
 }

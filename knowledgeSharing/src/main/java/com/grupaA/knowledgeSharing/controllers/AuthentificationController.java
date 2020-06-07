@@ -1,6 +1,7 @@
 package com.grupaA.knowledgeSharing.controllers;
 
 import com.grupaA.knowledgeSharing.model.Korisnik;
+import com.grupaA.knowledgeSharing.repositories.KorisnikRepository;
 import com.grupaA.knowledgeSharing.services.KorisnikService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,7 +38,7 @@ public class AuthentificationController
         }
         else if(korisnikService.postojiKorisnik(korisnik))
         {
-            modelAndView.addObject("poruka", "Molimo Vas da ispravite greske");
+            modelAndView.addObject("poruka", "Korisnik sa ovim emailom je vec registrovan!");
         }
         else
         {
