@@ -3,11 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Registracija</title>
+    <style>
+        .panel-footer {
+            border-top: 1px solid black;
+        }
+    </style>
+    <link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body style="background-color: #337ab7">
+
 <div style="background-color: #337ab7; height: 50px;"></div>
 <div class="container-fluid" style="margin-top:30px">
     <div class="row col-lg-4 col-lg-offset-4" style="margin-top: 40px; background-color: #fff; padding: 20px;">
@@ -40,6 +47,7 @@
             <input type="password" th:field="*{sifra}" placeholder="Sifra" class="form-control" required oninvalid="this.setCustomValidity('Ovo polje je obavezno')"
                    oninput="this.setCustomValidity('')" onautocomplete="this.setCustomValidity('')" onchange="this.setCustomValidity('')" >
         </div>
+        <input type="hidden" th:field="*{adminStatus}" th:value="${korisnik.setAdminStatus(false)}">
     </div>
     <div class="form-group">
         <div class="">
@@ -56,6 +64,16 @@
         </ul>
     </div>
 </form>
+    </div>
 </div>
+<br><br>
+<div class="panel-footer">
+    <footer class="footer mt-auto py-3" style="text-align: center">
+        <div class="container">
+            <span class="text-muted" style="color: black; text-align: center">© Knowledge Sharing,2020</span>
+        </div>
+    </footer>
+</div>
+
 </body>
 </html>
