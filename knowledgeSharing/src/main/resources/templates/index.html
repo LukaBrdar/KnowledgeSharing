@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head>
+<head th:insert="fragments.html :: headerfiles">
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+<body>
+<header th:insert="fragments.html :: nav"></header>
 <div class="container">
     <div th:switch="${korisnici}">
         <h2 th:case="null">Nema korisnika</h2>
@@ -28,4 +30,5 @@
         </div>
     </div>
 </div>
+</body>
 </html>
