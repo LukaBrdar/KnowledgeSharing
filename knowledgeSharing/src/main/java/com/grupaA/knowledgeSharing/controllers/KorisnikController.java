@@ -20,13 +20,7 @@ public class KorisnikController
 
 
 
-    @RequestMapping()
-    public String index(Model model)
-    {
-        List<Korisnik> korisnici = this.korisnikService.findAll();
-        model.addAttribute("korisnici", korisnici);
-        return "index";
-    }
+
 
 
 }
