@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
-<head>
+<head th:insert="fragments.html :: headerfiles">
     <link href='https://fonts.googleapis.com/css?family=Cinzel' rel='stylesheet'>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <meta charset="UTF-8">
     <title>Login</title>
     <link rel="stylesheet" type="text/css" href="">
+    <!--
     <style type="text/css">
         .fontMenjanje{
             font-family: 'Cinzel';font-size: 44px;
@@ -53,7 +54,6 @@
         }
 
     </style>
-    <!--
     <script>
         $(document).ready(function(){
             $("#knHed").animate({right: '250px'}, "slow");
@@ -72,23 +72,24 @@
     </script> -->
 </head>
 <body>
-<h1 id = "knHed" class="fontMenjanje glow">Knowledge Sharing</h1>
+<header th:insert="fragments.html :: nav"></header>
+<h1 id = "knHed" class="fontMenjanje glow" align="center">Knowledge Sharing</h1>
 <div>
-    <form id="logFrm" name="form" th:action="@{/login}" method="post">
+    <form id="logFrm" name="form" th:action="@{/login}" method="post" align="center">
         <fieldset>
-            <legend>Please Login</legend>
+            <legend align="center">Please Login</legend>
             <div th:if="${param.error}" class="alert alert-error">
                 Invalid username and password.
             </div>
             <div th:if="${param.logout}" class="alert alert-success">
                 You have been logged out.
             </div>
-            <label for="email">Email</label>
-            <input type="text" id="email" name="email">
-            <label for="sifra">Password</label>
-            <input type="password" id="sifra" name="password">
+            <label for="email" >Email</label><br>
+            <input type="text" id="email" name="username"><br>
+            <label for="sifra" >Password</label><br>
+            <input type="password" id="sifra" name="password"><br><br>
             <div class="form-actions">
-                <button type="submit" class="btn">Login</button>
+                <button type="submit" class="btn" style="background-color: silver; align-content: center;">Login</button>
             </div>
         </fieldset>
     </form>
