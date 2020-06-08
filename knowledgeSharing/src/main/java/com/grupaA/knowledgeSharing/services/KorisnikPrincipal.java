@@ -52,4 +52,6 @@ public class KorisnikPrincipal implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+    public Boolean getAdminStatus(){return korisnik.getAdminStatus();}
 }

@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org"
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <!-- Fragment #1 : Header files contains css and js references -->
@@ -20,6 +21,7 @@
 <!-- Fragment #2 : Navbar contains nav links -->
 <div th:fragment="nav">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
         <a class="navbar-brand" href="#">Knowledge sharing</a>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -34,12 +36,16 @@
                     <a class="nav-link" href="#" th:href="@{~/admin/index}">Admin</a>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0" form-method="post" th:action="@{/register}">
-                <button sec:authorize="isAnonymous()" th:href="@{/register}" class="btn btn-outline-danger my-2 my-sm-0 btn-sm" type="submit">Register</button>
-            </form>
-            <form class="form-inline my-2 my-lg-0" form-method="post" th:action="@{/login}">
-                <button sec:authorize="isAnonymous()" th:href="@{/login}" class="btn btn-outline-info my-2 my-sm-0 btn-sm" type="submit">Login</button>
-            </form>
+
+            <div sec:authorize="isAnonymous()">
+                <a th:href="@{/register}" class="btn btn-outline-danger my-2 my-sm-0 btn-sm">Register</a>
+                <a th:href="@{/login}" class="btn btn-outline-info my-2 my-sm-0 btn-sm">Login</a>
+            </div>
+            <div sec:authorize="isAuthenticated()">
+                <p th:text="${#authentication.name}"></p>
+                <a th:href="@{/logout}" class="btn btn-outline-info my-2 my-sm-0 btn-sm">Logout</a>
+            </div>
+        </div>
         </div>
     </nav>
 </div>
