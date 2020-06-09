@@ -20,7 +20,7 @@ public class KorisnikPrincipal implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singleton(new SimpleGrantedAuthority("KORISNIK"));
+        return Collections.singleton(new SimpleGrantedAuthority(korisnik.getAdminStatus()));
     }
 
     @Override
@@ -53,5 +53,4 @@ public class KorisnikPrincipal implements UserDetails {
         return true;
     }
 
-    public Boolean getAdminStatus(){return korisnik.getAdminStatus();}
 }

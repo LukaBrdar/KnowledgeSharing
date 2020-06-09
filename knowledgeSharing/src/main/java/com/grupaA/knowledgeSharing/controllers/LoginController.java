@@ -28,11 +28,5 @@ public class LoginController {
         }
         return "redirect:/login?logout";
     }
-
-    @RequestMapping(value = "/adminStatus", method = RequestMethod.GET)
-    public Boolean currentUserNameSimple(HttpServletRequest request) {
-    KorisnikPrincipal principal = (KorisnikPrincipal) request.getUserPrincipal();
-    return principal.getAdminStatus();
-    }
 }
 

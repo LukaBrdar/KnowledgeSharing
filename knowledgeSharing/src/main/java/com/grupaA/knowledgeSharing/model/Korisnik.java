@@ -22,8 +22,8 @@ public class Korisnik {
     private String sifra;
     @Column(name = "Biografija", length = 4000, nullable = true, unique = false)
     private String biografija;
-    @Column(name = "AdminStatus", nullable = true, unique = false)
-    private Boolean adminStatus;
+    @Column(name = "AdminStatus", length = 20, nullable = true, unique = false)
+    private String adminStatus;
 
     @ManyToMany
     @JoinTable(
@@ -72,7 +72,7 @@ public class Korisnik {
     {
         return biografija;
     }
-    public Boolean getAdminStatus()
+    public String getAdminStatus()
     {
         return adminStatus;
     }
@@ -101,12 +101,12 @@ public class Korisnik {
     {
         this.biografija = biografija;
     }
-    public void setAdminStatus(Boolean adminStatus)
+    public void setAdminStatus(String adminStatus)
     {
         this.adminStatus = adminStatus;
     }
 
-    public Korisnik(Long korisnikId, String ime, String prezime, String email, String sifra, String biografija, Boolean adminStatus){
+    public Korisnik(Long korisnikId, String ime, String prezime, String email, String sifra, String biografija, String adminStatus){
         this.korisnikId = korisnikId;
         this.ime = ime;
         this.prezime = prezime;
