@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:insert="fragments.html :: headerfiles">
+<link href='https://fonts.googleapis.com/css?family=Cinzel' rel='stylesheet'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>  	
+
+    <meta charset="UTF-8">
+    <title>Oblasti zeli da uci</title>
+    <link rel="stylesheet" type="text/css" href="">
+</head>
+<body>
+<header th:insert="fragments.html :: nav"></header>
+<h1 id = "knHed" class="fontMenjanje glow" align="center">Knowledge Sharing</h1>
+<div>
+    <input type="text" th:name="oblasti"/>
+
+     <select id="oblastiSelect" th:field="*{oblasti}">
+     <option th:each="oblasti: ${oblasti}"
+             th:value="${oblasti.OblastId}"
+             th:utext="${oblasti.Naziv}"/>
+</select>
+
+</div>
+</body>
+</html>

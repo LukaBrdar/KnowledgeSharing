@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head th:insert="fragments.html :: headerfiles">
+    <meta charset="UTF-8">
+    <title>Registracija</title>
+    <style>
+        .panel-footer
+        {
+            border-top: 1px solid black;
+        }
+    </style>
+    <link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body style="background-color: #337ab7">
+<header th:insert="fragments.html :: nav"></header>
+<div style="background-color: #337ab7; height: 50px;"></div>
+<div class="container-fluid" style="margin-top:30px" align="center">
+    <div class="row col-lg-4 col-lg-offset-4" style="margin-top: 40px; background-color: #fff; padding: 20px;" >
+<form autocomplete="off" th:action="@{/register}" th:object="${korisnik}" method="post" align="left">
+    <div class="container" margin="0px">
+    <h2 class="form-signin-heading">Registracija</h2>
+    <div class="form-group">
+        <div class="">
+            <label>Ime</label><br>
+            <input type="text" th:field="*{ime}" placeholder="Ime" class="form-control" required oninvalid="this.setCustomValidity('Ovo polje je obavezno')"
+                   oninput="this.setCustomValidity('')" onautocomplete="this.setCustomValidity('')" onchange="this.setCustomValidity('')"  style="width: 280%">
+    </div>
+    </div>
+    <div class="form-group">
+        <div class="">
+            <label>Prezime</label><br>
+            <input type="text" th:field="*{prezime}" placeholder="Prezime" class="form-control" required oninvalid="this.setCustomValidity('Ovo polje je obavezno')"
+                   oninput="this.setCustomValidity('')" onautocomplete="this.setCustomValidity('')" onchange="this.setCustomValidity('')"  style="width: 280%">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="">
+            <label>Email</label><br>
+            <input type="text" th:field="*{email}" placeholder="Email" class="form-control" required oninvalid="this.setCustomValidity('Ovo polje je obavezno')"
+                   oninput="this.setCustomValidity('')" onautocomplete="this.setCustomValidity('')" onchange="this.setCustomValidity('')"  style="width: 280%">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="">
+            <label>Sifra</label><br>
+            <input type="password" th:field="*{sifra}" placeholder="Sifra" class="form-control" required oninvalid="this.setCustomValidity('Ovo polje je obavezno')"
+                   oninput="this.setCustomValidity('')" onautocomplete="this.setCustomValidity('')" onchange="this.setCustomValidity('')"  style="width: 280%">
+        </div>
+        <input type="hidden" th:field="*{adminStatus}" th:value="${korisnik.setAdminStatus(false)}">
+    </div>
+    <div class="form-group">
+        <div class="" >
+            <input type="submit" class="btn btn-primary btn-block" value="Registruj se" style="width: 280%">
+        </div>
+    </div>
+    <span th:utext="${poruka}"></span>
+    <div class="alert alert-success alert-dismissible col-sm-12"
+          th:if="${(bindingResult!=null && bindingResult.getAllErrors() != null)}">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+        <ul th:each="data : ${bindingResult.getAllErrors()}">
+            <li th:text="${data.getObjectName() + ' :: ' + data.getDefaultMessage()}">
+            </li>
+        </ul>
+    </div>
+    </div>
+</form>
+    </div>
+</div>
+<br><br>
+<div class="panel-footer">
+    <footer class="footer mt-auto py-3" style="text-align: center; color: #ffffff;">
+        <div class="container">
+            <span class="text-muted" style="color: #ffffff; text-align: center">© Knowledge Sharing,2020</span>
+        </div>
+    </footer>
+</div>
+</body>
+</html>

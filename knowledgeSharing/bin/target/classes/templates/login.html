@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:insert="fragments.html :: headerfiles">
+    <link href='https://fonts.googleapis.com/css?family=Cinzel' rel='stylesheet'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="">
+    <!--
+    <style type="text/css">
+        .fontMenjanje{
+            font-family: 'Cinzel';font-size: 44px;
+            color: #DAA520;
+            -webkit-text-stroke-width: 2px;
+            -webkit-text-stroke-color: white;
+
+        }
+        #knHed{
+            position: center;
+            left: 0px;
+            top: 0px;
+        }
+        #shHed{
+            position: absolute;
+            right: 0px;
+            top: 0px;
+        }
+        #logFrm{
+            /*opacity: 0.0;*/
+            color: white;
+            position: absolute;
+            top:100px;
+            left: 380px;
+        }
+        body {
+            background-color:black;
+        }
+        .glow {
+
+            color: #379d37;
+            text-align: center;
+            -webkit-animation: glow 1s ease-in-out infinite alternate;
+            -moz-animation: glow 1s ease-in-out infinite alternate;
+            animation: glow 1s ease-in-out infinite alternate;
+        }
+
+        @-webkit-keyframes glow {
+            from {
+                text-shadow: 0 0 10px #0d260d, 0 0 20px #143914, 0 0 30px #1b4b1b, 0 0 40px #215e21, 0 0 50px #2e842e, 0 0 60px #359735, 0 0 100px #379d37;
+            }
+            to {
+                text-shadow: 0 0 20px #42bd42, 0 0 30px #55c355, 0 0 40px #68ca68, 0 0 50px #7bd17b, 0 0 60px #a1dea1, 0 0 70px #d9f2d9, 0 0 100px #ffffff;
+            }
+        }
+
+    </style>
+    <script>
+        $(document).ready(function(){
+            $("#knHed").animate({right: '250px'}, "slow");
+            $("#shHed").animate({left: '680px'}, "slow");
+            $("#logFrm").animate({opacity: '0.0'}, "slow");
+            $("#logFrm").animate({opacity: '0.0'}, "slow");
+            $("#logFrm").animate({opacity: '0.0'}, "slow");
+            $("#logFrm").animate({opacity: '0.0'}, "slow");
+            $("#logFrm").animate({opacity: '0.2'}, "slow");
+            $("#logFrm").animate({opacity: '0.4'}, "slow");
+            $("#logFrm").animate({opacity: '0.6'}, "slow");
+            $("#logFrm").animate({opacity: '0.8'}, "slow");
+            $("#logFrm").animate({opacity: '1'}, "slow");
+            $("#logFrm").opacity = '1';
+        });
+    </script> -->
+</head>
+<body>
+<header th:insert="fragments.html :: nav"></header>
+<h1 id = "knHed" class="fontMenjanje glow" align="center">Knowledge Sharing</h1>
+<div>
+    <form id="logFrm" name="form" th:action="@{/login}" method="post" align="center">
+        <fieldset>
+            <legend align="center">Please Login</legend>
+            <div th:if="${param.error}" class="alert alert-error">
+                Invalid username and password.
+            </div>
+            <div th:if="${param.logout}" class="alert alert-success">
+                You have been logged out.
+            </div>
+            <label for="email" >Email</label><br>
+            <input type="text" id="email" name="username"><br>
+            <label for="sifra" >Password</label><br>
+            <input type="password" id="sifra" name="password"><br><br>
+            <div class="form-actions">
+                <button type="submit" class="btn" style="background-color: silver; align-content: center;">Login</button>
+            </div>
+        </fieldset>
+    </form>
+</div>
+</body>
+</html>
