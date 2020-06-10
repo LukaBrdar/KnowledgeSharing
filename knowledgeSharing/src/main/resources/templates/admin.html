@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:insert="fragments.html :: headerfiles">
+<meta charset="UTF-8">
+<title>Admin</title>
+</head>
+<body>
+<header th:insert="fragments.html :: nav"></header>
+<div class="container">
+    <form th:action="@{/admin}" th:object="${korisnik}" method="post" th:align="center">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Ime</th>
+                <th>Prezime</th>
+                <th>Email</th>
+                <th>Izmene</th>
+                <th>Brisanje</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="korisnik : ${korisnik}" th:if="${(korisnik.adminStatus == 'KORISNIK')}">
+                <td th:text="${korisnik.ime}"></td>
+                <td th:text="${korisnik.prezime}"></td>
+                <td th:text="${korisnik.email}"></td>
+                <td><a class="btn btn-primary" th:href="@{/korisnici/update/{korisnik_id}(korisnik_id=${korisnik.korisnikId})}">Update</a></td>
+                <td><a class="btn btn-danger" th:href="@{/delete/${korisnik.korisnikId}}">Delete</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+</body>
+</html>

@@ -21,7 +21,6 @@ public class Podoblast {
 
     @ManyToMany(mappedBy = "podoblastiZaPredavanje")
     Set<Korisnik> korisniciPredavanje;
-
     public Long getPodoblastId()
     {
         return podoblastId;
@@ -37,5 +36,10 @@ public class Podoblast {
     public void setNazivPodoblasti(String nazivPodoblasti)
     {
         this.nazivPodoblasti = nazivPodoblasti;
+    }
+
+    public Oblast getOblast()
+    {
+        return oblast;
     }
 }

@@ -33,6 +33,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/register", "/", "/images/**").permitAll()
+                .antMatchers("/admin/korisnici", "/korisnici/**").hasAuthority("ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()

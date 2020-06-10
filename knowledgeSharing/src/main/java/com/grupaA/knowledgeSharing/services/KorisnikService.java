@@ -52,4 +52,5 @@ public class KorisnikService implements IKorisnikService
         }
         return korisnikVecPostoji;
     }
+
 }
