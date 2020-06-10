@@ -44,4 +44,13 @@ public class AdminController
         model.addAttribute("korisnici", korisnikRepository.findAll());
         return "update";
     }
+    @GetMapping("delete/{korisnik_id}")
+    public String deleteStudent(@PathVariable("korisnik_id") long korisnik_id, Model model)
+    {
+        Korisnik korisnik = korisnikRepository.findById(korisnik_id)
+                .orElseThrow(() -> new IllegalArgumentException("Neispravan ID korisnika:" + korisnik_id));
+        korisnikRepository.delete(korisnik);
+        model.addAttribute("korisnik", korisnikRepository.findAll());
+        return "admin";
+    }
 }
