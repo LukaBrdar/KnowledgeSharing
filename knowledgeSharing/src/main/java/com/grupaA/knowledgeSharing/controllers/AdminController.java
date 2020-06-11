@@ -32,13 +32,8 @@ public class AdminController
     }
 
     @PostMapping("update/{korisnik_id}")
-    public String updateStudent(@PathVariable("korisnik_id") Long korisnik_id, @Valid Korisnik korisnik, BindingResult result, Model model)
+    public String updateStudent(@PathVariable("korisnik_id") Long korisnik_id, @Valid Korisnik korisnik,  Model model)
     {
-        if (result.hasErrors())
-        {
-            korisnik.setKorisnikId(korisnik_id);
-            return "update";
-        }
         korisnik.setKorisnikId(korisnik_id);
         korisnikRepository.save(korisnik);
         model.addAttribute("korisnici", korisnikRepository.findAll());

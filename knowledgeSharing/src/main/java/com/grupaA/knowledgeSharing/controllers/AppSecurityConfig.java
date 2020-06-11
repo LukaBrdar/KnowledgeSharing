@@ -21,7 +21,8 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
     private UserDetailsService userDetailsService;
 
     @Bean
-    public AuthenticationProvider authenticationProvider(){
+    public AuthenticationProvider authenticationProvider()
+    {
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
         provider.setUserDetailsService(userDetailsService);
         provider.setPasswordEncoder(new BCryptPasswordEncoder());
@@ -34,6 +35,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/register", "/", "/images/**").permitAll()
                 .antMatchers("/admin/korisnici", "/korisnici/**").hasAuthority("ADMIN")
+                .antMatchers("/profile/**").hasAuthority("KORISNIK")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -41,7 +43,8 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
                 .defaultSuccessUrl("/", true)
                 .and()
                 .logout()
-                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout")).permitAll()
+                .invalidateHttpSession(true)
                 .logoutSuccessUrl("/login");
     }
 }

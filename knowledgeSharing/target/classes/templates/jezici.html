@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:insert="fragments.html :: headerfiles">
+    <meta charset="UTF-8">
+    <title>Korisnicki jezici</title>
+</head>
+<body>
+<header th:insert="fragments.html :: nav"></header>
+<form action="#" th:action="@{/jezici}" th:object="${jezici}" method="post">
+    <div class="form-group">
+        <label>Izaberite jezike</label><br>
+        <th:block th:each="jezik:${jezici}"><br>
+            <input type="checkbox" name="jezici" th:value="${jezik.getJezikId()}" th:text="${jezik.getNaziv()}">
+        </th:block>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Potvrdite izbor jazika">
+    </div>
+</form>
+</body>
+</html>

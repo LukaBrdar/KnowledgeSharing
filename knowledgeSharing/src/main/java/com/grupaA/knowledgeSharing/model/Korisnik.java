@@ -25,6 +25,36 @@ public class Korisnik {
     @Column(name = "AdminStatus", length = 20, nullable = true, unique = false)
     private String adminStatus;
 
+    public Set<Jezik> getPoznatiJezici()
+    {
+        return poznatiJezici;
+    }
+
+    public void setPoznatiJezici(Set<Jezik> poznatiJezici)
+    {
+        this.poznatiJezici = poznatiJezici;
+    }
+
+    public Set<Podoblast> getPodoblastiZaUcenje()
+    {
+        return podoblastiZaUcenje;
+    }
+
+    public void setPodoblastiZaUcenje(Set<Podoblast> podoblastiZaUcenje)
+    {
+        this.podoblastiZaUcenje = podoblastiZaUcenje;
+    }
+
+    public Set<Podoblast> getPodoblastiZaPredavanje()
+    {
+        return podoblastiZaPredavanje;
+    }
+
+    public void setPodoblastiZaPredavanje(Set<Podoblast> podoblastiZaPredavanje)
+    {
+        this.podoblastiZaPredavanje = podoblastiZaPredavanje;
+    }
+
     @ManyToMany
     @JoinTable(
             name = "korisnicki_jezici",

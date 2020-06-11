@@ -12,7 +12,8 @@ public class Jezik {
     @Column(name="Naziv", length=50, nullable=true, unique=false)
     private String naziv;
 
-    @ManyToMany(mappedBy = "poznatiJezici")
+
+    @ManyToMany(mappedBy = "poznatiJezici", cascade = CascadeType.MERGE)
     Set<Korisnik> korisnici;
 
     public Long getJezikId()

@@ -1,7 +1,6 @@
 package com.grupaA.knowledgeSharing.controllers;
 
 import com.grupaA.knowledgeSharing.model.Oblast;
-import com.grupaA.knowledgeSharing.model.Podoblast;
 import com.grupaA.knowledgeSharing.services.OblastService;
 import com.grupaA.knowledgeSharing.services.PodoblastService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +15,6 @@ public class OblastController
 {
     @Autowired
     private OblastService oblastService;
-    @Autowired
-    private PodoblastService podoblastService;
 
     @RequestMapping(value = "/izborOblasti", method = RequestMethod.GET)
     public String oblasti(Model model)

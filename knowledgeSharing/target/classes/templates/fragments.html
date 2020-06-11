@@ -30,7 +30,10 @@
                     <a class="nav-link" href="#" th:href="@{~/}"><i class="fa fa-home"></i>Home</a>
                 </li>
                 <li sec:authorize="hasAuthority('KORISNIK')" class="nav-item">
-                    <a class="nav-link" href="#" th:href="@{~/profile}">Profile</a>
+                    <a class="nav-link" href="#" th:href="@{~/profile/update}">Profile</a>
+                </li>
+                <li sec:authorize="hasAuthority('KORISNIK')" class="nav-item">
+                    <a class="nav-link" href="#" th:href="@{~/jezici}">Izbor jezika</a>
                 </li>
                 <li sec:authorize="hasAuthority('ADMIN')" class="nav-item">
                     <a class="nav-link" href="#" th:href="@{~/admin/korisnici}">Admin</a>
