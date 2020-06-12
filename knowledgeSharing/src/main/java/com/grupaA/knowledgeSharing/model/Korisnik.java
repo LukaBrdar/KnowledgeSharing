@@ -35,24 +35,24 @@ public class Korisnik {
         this.poznatiJezici = poznatiJezici;
     }
 
-    public Set<Podoblast> getPodoblastiZaUcenje()
+    public Set<Oblast> getOblastiZaUcenje()
     {
-        return podoblastiZaUcenje;
+        return oblastiZaUcenje;
     }
 
-    public void setPodoblastiZaUcenje(Set<Podoblast> podoblastiZaUcenje)
+    public void setOblastiZaUcenje(Set<Oblast> oblastiZaUcenje)
     {
-        this.podoblastiZaUcenje = podoblastiZaUcenje;
+        this.oblastiZaUcenje = oblastiZaUcenje;
     }
 
-    public Set<Podoblast> getPodoblastiZaPredavanje()
+    public Set<Oblast> getOblastiZaPredavanje()
     {
-        return podoblastiZaPredavanje;
+        return oblastiZaPredavanje;
     }
 
-    public void setPodoblastiZaPredavanje(Set<Podoblast> podoblastiZaPredavanje)
+    public void setOblastiZaPredavanje(Set<Oblast> oblastiZaPredavanje)
     {
-        this.podoblastiZaPredavanje = podoblastiZaPredavanje;
+        this.oblastiZaPredavanje = oblastiZaPredavanje;
     }
 
     @ManyToMany
@@ -66,15 +66,15 @@ public class Korisnik {
     @JoinTable(
             name = "zeli_da_uci",
             joinColumns = @JoinColumn(name = "korisnik_id"),
-            inverseJoinColumns = @JoinColumn(name = "podoblast_id"))
-    Set<Podoblast> podoblastiZaUcenje;
+            inverseJoinColumns = @JoinColumn(name = "oblast_id"))
+    Set<Oblast> oblastiZaUcenje;
 
     @ManyToMany
     @JoinTable(
             name = "zeli_da_predaje",
             joinColumns = @JoinColumn(name = "korisnik_id"),
-            inverseJoinColumns = @JoinColumn(name = "podoblast_id"))
-    Set<Podoblast> podoblastiZaPredavanje;
+            inverseJoinColumns = @JoinColumn(name = "oblast_id"))
+    Set<Oblast> oblastiZaPredavanje;
 
 
 

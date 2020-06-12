@@ -37,14 +37,13 @@ public class JezikController
     {
         Korisnik korisnik= korisnikRepository.findByMail(authentication.getName());
 
-
-        Set<Jezik> jezikSet = new HashSet<Jezik>();
-        for (Jezik jezik:jezici) {
-            jezikSet.add(jezik);
-        }
-        korisnik.setPoznatiJezici(jezikSet);
-        korisnikRepository.save(korisnik);
-
-        return "redirect:/jezici";
+            Set<Jezik> jezikSet = new HashSet<Jezik>();
+            for (Jezik jezik:jezici)
+            {
+                jezikSet.add(jezik);
+            }
+            korisnik.setPoznatiJezici(jezikSet);
+            korisnikRepository.save(korisnik);
+            return "redirect:/jezici";
     }
 }

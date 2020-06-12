@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:insert="fragments.html :: headerfiles">
+    <meta charset="UTF-8">
+    <title>Odabir predavača i polaznika</title>
+</head>
+<body>
+<header th:insert="fragments.html :: nav"></header>
+<div class="container">
+    <form action="#" th:action="@{/decision}" method="post">
+        <h2>Da li želite da učite ili da predajete?</h2>
+        <div class="container">
+            <a class="btn btn-primary" th:href="@{/izborOblastiPredavac}">Želim da predajem</a><br>
+        </div>
+        <div class="container">
+            <a class="btn btn-primary" th:href="@{/izborOblastiUcenik}">Želim da učim</a>
+        </div>
+    </form>
+</div>
+</body>
+</html>

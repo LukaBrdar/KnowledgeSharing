@@ -22,33 +22,36 @@
 <div th:fragment="nav">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-        <a class="navbar-brand" href="#">Knowledge sharing</a>
+            <a class="navbar-brand" href="#">Knowledge sharing</a>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#" th:href="@{~/}"><i class="fa fa-home"></i>Home</a>
-                </li>
-                <li sec:authorize="hasAuthority('KORISNIK')" class="nav-item">
-                    <a class="nav-link" href="#" th:href="@{~/profile/update}">Profile</a>
-                </li>
-                <li sec:authorize="hasAuthority('KORISNIK')" class="nav-item">
-                    <a class="nav-link" href="#" th:href="@{~/jezici}">Izbor jezika</a>
-                </li>
-                <li sec:authorize="hasAuthority('ADMIN')" class="nav-item">
-                    <a class="nav-link" href="#" th:href="@{~/admin/korisnici}">Admin</a>
-                </li>
-            </ul>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" th:href="@{~/}"><i class="fa fa-home"></i>Home</a>
+                    </li>
+                    <li sec:authorize="hasAuthority('KORISNIK')" class="nav-item">
+                        <a class="nav-link" href="#" th:href="@{~/profile/update}">Profile</a>
+                    </li>
+                    <li sec:authorize="hasAuthority('KORISNIK')" class="nav-item">
+                        <a class="nav-link" href="#" th:href="@{~/jezici}">Izbor jezika</a>
+                    </li>
+                    <li sec:authorize="hasAuthority('KORISNIK')" class="nav-item">
+                        <a class="nav-link" href="#" th:href="@{~/decision}">Izbor oblasti</a>
+                    </li>
+                    <li sec:authorize="hasAuthority('ADMIN')" class="nav-item">
+                        <a class="nav-link" href="#" th:href="@{~/admin/korisnici}">Admin</a>
+                    </li>
+                </ul>
 
-            <div sec:authorize="isAnonymous()">
-                <a th:href="@{/register}" class="btn btn-outline-danger my-2 my-sm-0 btn-sm">Register</a>
-                <a th:href="@{/login}" class="btn btn-outline-info my-2 my-sm-0 btn-sm">Login</a>
+                <div sec:authorize="isAnonymous()">
+                    <a th:href="@{/register}" class="btn btn-outline-danger my-2 my-sm-0 btn-sm">Register</a>
+                    <a th:href="@{/login}" class="btn btn-outline-info my-2 my-sm-0 btn-sm">Login</a>
+                </div>
+                <div sec:authorize="isAuthenticated()">
+                    <p th:text="${#authentication.name}" style="color: white;"></p>
+                    <a th:href="@{/logout}" class="btn btn-outline-info my-2 my-sm-0 btn-sm">Logout</a>
+                </div>
             </div>
-            <div sec:authorize="isAuthenticated()">
-                <p th:text="${#authentication.name}" style="color: white;"></p>
-                <a th:href="@{/logout}" class="btn btn-outline-info my-2 my-sm-0 btn-sm">Logout</a>
-            </div>
-        </div>
         </div>
     </nav>
 </div>

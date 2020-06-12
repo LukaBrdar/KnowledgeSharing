@@ -3,6 +3,7 @@ package com.grupaA.knowledgeSharing.model;
 import javax.persistence.*;
 import java.util.Set;
 
+
 @Entity
 @Table(name="JEZIK")
 public class Jezik {

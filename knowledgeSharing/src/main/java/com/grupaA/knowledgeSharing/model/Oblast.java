@@ -9,12 +9,14 @@ public class Oblast {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "oblast_id", unique = true)
     private Long oblastId;
-    @Column(name = "NazivOblasti", length = 50, nullable = true, unique = false)
+    @Column(name = "naziv_oblasti", length = 50, nullable = true, unique = false)
     private String naziv;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "oblast_id")
-    private Set<Podoblast> podoblasti;
+    @ManyToMany(mappedBy = "oblastiZaUcenje", cascade = CascadeType.MERGE)
+    Set<Korisnik> korisniciUcenje;
+
+    @ManyToMany(mappedBy = "oblastiZaPredavanje", cascade = CascadeType.MERGE)
+    Set<Korisnik> korisniciPredavanje;
 
     public Long getOblastId()
     {
@@ -34,3 +36,4 @@ public class Oblast {
     }
 
 }
+
