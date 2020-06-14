@@ -33,9 +33,10 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/register", "/pocetna", "/images/**", "/static/**").permitAll()
+                .antMatchers( "/pocetna", "/images/**", "/static/**", "/error").permitAll()
                 .antMatchers("/admin/**", "/korisnici/**").hasAuthority("ADMIN")
-                .antMatchers("/profile/**", "/").hasAuthority("KORISNIK")
+                .antMatchers("/profile/**", "/", "/pronadjiPartnera", "/jezici/**", "/brisanjeJezika/**", "/izborOblastiUcenik/**", "/brisanjeOblastiUcenik/**", "/izborOblastiPredavac/**", "/brisanjeOblastiPredavac/**").hasAuthority("KORISNIK")
+                .antMatchers("/register").anonymous()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
