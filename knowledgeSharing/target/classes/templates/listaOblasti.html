@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"  xmlns:th="https://www.thymeleaf.org">
+<head th:insert="fragments.html :: headerfiles">
+    <meta charset="UTF-8">
+    <title>Dodavanje novih oblasti</title>
+</head>
+<body>
+<header th:insert="fragments.html :: nav"></header>
+ <table class="table table-bordered">
+        <thead>
+        <tr  align="center">
+            <th>Naziv oblasti</th>
+        </tr>
+        </thead>
+        <tbody>
+    <tr th:each="oblast:${oblasti}" align="center">
+        <td th:text="${oblast.getNaziv()}" align="center"></td>
+    </tr>
+</table>
+<a class="btn btn-primary" th:href="@{/admin/dodavanje}">Dodajte novu oblast</a>
+</body>
+</html>

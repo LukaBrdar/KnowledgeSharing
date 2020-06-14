@@ -7,6 +7,7 @@ import com.grupaA.knowledgeSharing.repositories.JezikRepository;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class JezikService implements IJezikService
@@ -22,5 +23,9 @@ public class JezikService implements IJezikService
     public List<Jezik> findAll()
     {
         return this.jezikRepository.findAll();
+    }
+    public Set<Jezik> findAllSet()
+    {
+        return this.jezikRepository.findAllSet();
     }
 }

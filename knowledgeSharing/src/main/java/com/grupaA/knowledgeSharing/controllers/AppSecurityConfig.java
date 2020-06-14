@@ -33,14 +33,14 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/register", "/", "/images/**").permitAll()
-                .antMatchers("/admin/korisnici", "/korisnici/**").hasAuthority("ADMIN")
-                .antMatchers("/profile/**").hasAuthority("KORISNIK")
+                .antMatchers("/register", "/pocetna", "/images/**", "/static/**").permitAll()
+                .antMatchers("/admin/**", "/korisnici/**").hasAuthority("ADMIN")
+                .antMatchers("/profile/**", "/").hasAuthority("KORISNIK")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login").permitAll()
-                .defaultSuccessUrl("/", true)
+                .defaultSuccessUrl("/pocetna", true)
                 .and()
                 .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout")).permitAll()

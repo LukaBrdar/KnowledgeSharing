@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:insert="fragments.html :: headerfiles">
+    <meta charset="UTF-8">
+    <title>Prnalazenje partnera</title>
+</head>
+<body>
+<header th:insert="fragments.html :: nav"></header>
+<div class="container">
+<h2>Pronalazak partnera za ucenje</h2>
+<hr>
+    <div th:if="${bestMatch == null}">
+        <h3 class="danger">Za sada nema korisnika koji odgovara za vama</h3>
+    </div>
+    <div th:unless="${bestMatch==null}">
+        <h3>Korisnik sa kojim se najvise slazete:<bold th:text="${bestMatch.getIme()}"></bold><bold th:text="${bestMatch.getPrezime()}"></bold></h3>
+        <p>U kontakt sa korisnikom mozete pristupiti preko <a href="#" th:href="@{/}">chata</a> ili preko emaila.</p>
+        <p>Email: <bold th:text="${bestMatch.getEmail()}"></bold></p>
+
+        <p> Biografija korsinika <bold th:text="${bestMatch.getIme()}":></bold></p>
+        <p th:text="${bestMatch.getBiografija()}"></p>
+    </div>
+</div>
+
+</body>
+</html>

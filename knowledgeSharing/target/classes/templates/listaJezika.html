@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"  xmlns:th="https://www.thymeleaf.org">
+<head th:insert="fragments.html :: headerfiles">
+    <meta charset="UTF-8">
+    <title>Dodavanje novih jezika</title>
+</head>
+<body>
+<header th:insert="fragments.html :: nav"></header>
+<table class="table table-bordered">
+    <thead>
+    <tr  align="center">
+        <th>Naziv jezika</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="jezik:${jezici}" align="center">
+        <td th:text="${jezik.getNaziv()}" align="center"></td>
+    </tr>
+</table>
+<a class="btn btn-primary" th:href="@{/admin/dodavanjeJezika}">Dodajte novi jezik</a>
+</body>
+</html>

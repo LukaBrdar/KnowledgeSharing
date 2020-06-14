@@ -24,16 +24,20 @@ public class JezikController
     private KorisnikRepository korisnikRepository;
 
 
-    @RequestMapping(value = "/jezici", method = RequestMethod.GET)
-    public String jezici(Model model)
+    @RequestMapping(value = "/jezici/dodaj", method = RequestMethod.GET)
+    public String jezici(Model model, Authentication authentication)
     {
-        List<Jezik> jezici = jezikService.findAll();
+        Korisnik k = korisnikRepository.findByMail(authentication.getName());
+        Set<Jezik> j = new HashSet<Jezik>(k.getPoznatiJezici());
+        Set<Jezik> jezici = jezikService.findAllSet();
+        jezici.removeAll(j);
+
         model.addAttribute("jezici", jezici);
         return "jezici";
     }
 
-    @PostMapping(value = "/jezici/post")
-    public String jeziciPost(@RequestParam List<Jezik> jezici, Model model, Authentication authentication)
+    @PostMapping(value = "/jezici/dodaj/post")
+    public String jeziciPost(@RequestParam Set<Jezik> jezici, Model model, Authentication authentication)
     {
         Korisnik korisnik= korisnikRepository.findByMail(authentication.getName());
 
@@ -44,6 +48,29 @@ public class JezikController
             }
             korisnik.setPoznatiJezici(jezikSet);
             korisnikRepository.save(korisnik);
-            return "redirect:/jezici";
+            return "redirect:/profile";
+    }
+
+    @RequestMapping(value = "/brisanjeJezika", method = RequestMethod.GET)
+    public String brisanjeJezika(Model model, Authentication authentication)
+    {
+        Korisnik k = korisnikRepository.findByMail(authentication.getName());
+        Set<Jezik> j = new HashSet<Jezik>(k.getPoznatiJezici());
+
+        model.addAttribute("jezici", j);
+        return "brisanjeJezika";
+    }
+    @RequestMapping(value = "/brisanjeJezika/post", method = RequestMethod.POST)
+    public String brisnjeJezikaPost(@RequestParam Set<Jezik> jezici, Model model, Authentication authentication)
+    {
+        Korisnik korisnik= korisnikRepository.findByMail(authentication.getName());
+        Set<Jezik> jezikSet = new HashSet<Jezik>(korisnik.getPoznatiJezici());
+        for (Jezik jezik:jezici)
+        {
+            jezikSet.remove(jezik);
+        }
+        korisnik.setPoznatiJezici(jezikSet);
+        korisnikRepository.save(korisnik);
+        return "redirect:/profile";
     }
 }

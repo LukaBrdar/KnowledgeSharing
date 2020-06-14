@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
@@ -27,19 +27,25 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#" th:href="@{~/}"><i class="fa fa-home"></i>Home</a>
+                        <a class="nav-link" href="#" th:href="@{~/pocetna}"><i class="fa fa-home"></i>Home</a>
                     </li>
                     <li sec:authorize="hasAuthority('KORISNIK')" class="nav-item">
-                        <a class="nav-link" href="#" th:href="@{~/profile/update}">Profile</a>
+                        <a class="nav-link" href="#" th:href="@{~/}">Chat</a>
                     </li>
                     <li sec:authorize="hasAuthority('KORISNIK')" class="nav-item">
-                        <a class="nav-link" href="#" th:href="@{~/jezici}">Izbor jezika</a>
+                        <a class="nav-link" href="#" th:href="@{~/profile}">Profile</a>
                     </li>
                     <li sec:authorize="hasAuthority('KORISNIK')" class="nav-item">
-                        <a class="nav-link" href="#" th:href="@{~/decision}">Izbor oblasti</a>
+                        <a class="nav-link" href="#" th:href="@{~/pronajdiPartnera}">Pronadji partnera</a>
                     </li>
                     <li sec:authorize="hasAuthority('ADMIN')" class="nav-item">
-                        <a class="nav-link" href="#" th:href="@{~/admin/korisnici}">Admin</a>
+                        <a class="nav-link" href="#" th:href="@{~/admin/korisnici}">Pregled korisnika</a>
+                    </li>
+                    <li sec:authorize="hasAuthority('ADMIN')" class="nav-item">
+                        <a class="nav-link" href="#" th:href="@{~/admin/oblasti}">Pregled oblasti</a>
+                    </li>
+                    <li sec:authorize="hasAuthority('ADMIN')" class="nav-item">
+                        <a class="nav-link" href="#" th:href="@{~/admin/jezici}">Pregled jezika</a>
                     </li>
                 </ul>
 

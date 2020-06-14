@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:insert="fragments.html :: headerfiles">
+    <meta charset="UTF-8">
+    <title>Profil</title>
+</head>
+<body>
+<header th:insert="fragments.html :: nav"></header>
+<div class="container">
+    <h2>Vas profil</h2>
+<hr>
+<h4>Detalji profila</h4>
+    <a href="#" th:href="@{/profile/update}" class="btn btn-primary">Izmeni podatke</a>
+<table class="table">
+    <thead class="thead-dark">
+        <th>Ime</th>
+        <td th:text="${korisnik.getIme()}"></td>
+    </thead>
+    <thead class="thead-dark">
+    <th>Prezime</th>
+    <td th:text="${korisnik.getPrezime()}"></td>
+    </thead>
+    <thead class="thead-dark">
+    <th>Email</th>
+    <td th:text="${korisnik.getEmail()}"></td>
+    </thead>
+</table>
+<p>Biografija</p>
+<p th:text="${korisnik.getBiografija()}"></p>
+
+<hr>
+
+<h4>Jezici</h4>
+<a href="#" th:href="@{/jezici/dodaj}" class="btn btn-success">Dodaj jezike</a>
+    <a href="#" th:href="@{/brisanjeJezika}" class="btn btn-danger">Izbaci jezike</a>
+<table>
+    <tr th:each="jezik : ${jezici}">
+        <td th:text="${jezik.getNaziv()}"></td>
+    </tr>
+</table>
+
+<hr>
+
+<h4>Oblasti za ucenje</h4>
+    <a href="#" th:href="@{/izborOblastiUcenik}" class="btn btn-success">Dodaj oblasti za ucenje</a>
+    <a href="#" th:href="@{/brisanjeOblastiUcenik}" class="btn btn-danger">Izbaci oblasti za ucenje</a>
+    <table>
+        <tr th:each="oblast : ${uci}">
+            <td th:text="${oblast.getNaziv()}"></td>
+        </tr>
+    </table>
+
+<hr>
+    <h4>Oblasti za predavanje</h4>
+    <a href="#" th:href="@{/izborOblastiPredavac}" class="btn btn-success">Dodaj oblasti za predavanje</a>
+    <a href="#" th:href="@{/brisanjeOblastiPredavac}" class="btn btn-danger">Izbaci oblasti za predavanje</a>
+    <table>
+        <tr th:each="oblast : ${predaje}">
+            <td th:text="${oblast.getNaziv()}"></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

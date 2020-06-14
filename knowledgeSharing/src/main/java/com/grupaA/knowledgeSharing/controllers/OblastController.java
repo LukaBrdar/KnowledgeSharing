@@ -28,9 +28,19 @@ public class OblastController
 
 
     @RequestMapping(value = "/izborOblastiUcenik", method = RequestMethod.GET)
-    public String oblasti(Model model)
+    public String oblasti(Model model, Authentication authentication)
     {
-        List<Oblast> oblasti = oblastService.findAll();
+        Korisnik k = korisnikRepository.findByMail(authentication.getName());
+        Set<Oblast> predaje= new HashSet<Oblast>(k.getOblastiZaPredavanje());
+        Set<Oblast> oblasti = oblastService.findAllSet();
+
+        oblasti.removeAll(predaje);
+
+        Set<Oblast> uci= new HashSet<Oblast>(k.getOblastiZaUcenje());
+
+        oblasti.removeAll(uci);
+
+
         model.addAttribute("oblasti", oblasti);
         return "izborOblastiUcenik";
     }
@@ -40,21 +50,25 @@ public class OblastController
     {
         Korisnik korisnik = korisnikRepository.findByMail(authentication.getName());
 
-        Set<Oblast> oblastSet = new HashSet<Oblast>();
-        for (Oblast oblast:oblasti)
-        {
-            oblastSet.add(oblast);
-        }
-        korisnik.setOblastiZaUcenje(oblastSet);
+        korisnik.getOblastiZaUcenje().addAll(oblasti);
+
         korisnikRepository.save(korisnik);
 
-        return "redirect:/izborOblastiUcenik";
+        return "redirect:/profile";
     }
 
     @RequestMapping(value = "/izborOblastiPredavac", method = RequestMethod.GET)
-    public String oblastiPredavac(Model model)
+    public String oblastiPredavac(Model model, Authentication authentication)
     {
-        List<Oblast> oblasti = oblastService.findAll();
+        Korisnik k = korisnikRepository.findByMail(authentication.getName());
+        Set<Oblast> uci= new HashSet<Oblast>(k.getOblastiZaUcenje());
+        Set<Oblast> oblasti = oblastService.findAllSet();
+
+        oblasti.removeAll(uci);
+
+        Set<Oblast> predaje= new HashSet<Oblast>(k.getOblastiZaPredavanje());
+
+        oblasti.removeAll(predaje);
         model.addAttribute("oblasti", oblasti);
         return "izborOblastiPredavac";
     }
@@ -64,15 +78,64 @@ public class OblastController
     {
         Korisnik korisnik = korisnikRepository.findByMail(authentication.getName());
 
-        Set<Oblast> oblastSet = new HashSet<Oblast>();
-        for (Oblast oblast:oblasti)
-        {
-            oblastSet.add(oblast);
-        }
-        korisnik.setOblastiZaPredavanje(oblastSet);
+        korisnik.getOblastiZaPredavanje().addAll(oblasti);
+
         korisnikRepository.save(korisnik);
 
-        return "redirect:/izborOblastiPredavac";
+        return "redirect:/profile";
     }
+
+    @RequestMapping(value = "/brisanjeOblastiUcenik")
+    public String brisanjeOblastiUcenik(Model model, Authentication authentication)
+    {
+        Korisnik k = korisnikRepository.findByMail(authentication.getName());
+        Set<Oblast> oblasti=k.getOblastiZaUcenje();
+
+        model.addAttribute("oblasti", oblasti);
+        return "brisanjeOblastiUcenik";
+    }
+
+    @RequestMapping(value = "/brisanjeOblastiUcenik/post", method = RequestMethod.POST)
+    public String brisanjeOblastiUcenikPost(@RequestParam Set<Oblast> oblasti, Model model, Authentication authentication)
+    {
+        Korisnik k = korisnikRepository.findByMail(authentication.getName());
+
+        Set<Oblast> uci = k.getOblastiZaUcenje();
+        for (Oblast o: oblasti) {
+            uci.remove(o);
+        }
+
+        k.setOblastiZaUcenje(uci);
+        korisnikRepository.save(k);
+
+        return "redirect:/profile";
+    }
+
+    @RequestMapping(value = "/brisanjeOblastiPredavac")
+    public String brisanjeOblastiPredavac(Model model, Authentication authentication)
+    {
+        Korisnik k = korisnikRepository.findByMail(authentication.getName());
+        Set<Oblast> oblasti=k.getOblastiZaPredavanje();
+
+        model.addAttribute("oblasti", oblasti);
+        return "brisanjeOblastiPredavac";
+    }
+
+    @RequestMapping(value = "/brisanjeOblastiPredavac/post", method = RequestMethod.POST)
+    public String brisanjeOblastiPredavacPost(@RequestParam Set<Oblast> oblasti, Model model, Authentication authentication)
+    {
+        Korisnik k = korisnikRepository.findByMail(authentication.getName());
+
+        Set<Oblast> predaje = k.getOblastiZaPredavanje();
+        for (Oblast o: oblasti) {
+            predaje.remove(o);
+        }
+
+        k.setOblastiZaPredavanje(predaje);
+        korisnikRepository.save(k);
+
+        return "redirect:/profile";
+    }
+
 }
 
