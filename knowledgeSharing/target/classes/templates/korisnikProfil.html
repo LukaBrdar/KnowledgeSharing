@@ -6,13 +6,14 @@
     <meta charset="UTF-8">
     <title>Profil</title>
 </head>
-<body>
+<body style="background-image: url(/images/slikapozadina.jpg); background-repeat: no-repeat;background-size: cover;">
 <header th:insert="fragments.html :: nav"></header>
-<div class="container">
+<div align="center" class="container">
     <h2>Vas profil</h2>
 <hr>
 <h4>Detalji profila</h4>
     <a href="#" th:href="@{/profile/update}" class="btn btn-primary">Izmeni podatke</a>
+    <div align = "center">
 <table class="table">
     <thead class="thead-dark">
         <th>Ime</th>
@@ -27,6 +28,7 @@
     <td th:text="${korisnik.getEmail()}"></td>
     </thead>
 </table>
+</div>
 <p>Biografija</p>
 <p th:text="${korisnik.getBiografija()}"></p>
 

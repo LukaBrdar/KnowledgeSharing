@@ -4,17 +4,17 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:insert="fragments.html :: headerfiles">
     <meta charset="UTF-8">
-    <title>Prnalazenje partnera</title>
+    <title>Pronalazenje partnera</title>
 </head>
-<body>
+<body style="background-image: url(/images/verynice.jpeg); background-repeat: no-repeat;background-size: cover;">
 <header th:insert="fragments.html :: nav"></header>
-<div class="container">
+<div align="center" style="color:white;" class="container">
 <h2>Pronalazak partnera za ucenje</h2>
 <hr>
-    <div th:if="${bestMatch == null}">
-        <h3 class="danger">Za sada nema korisnika koji odgovara za vama</h3>
+    <div align="center" th:if="${bestMatch == null}">
+        <h3 class="danger">Za sada nema korisnika koji odgovara vama</h3>
     </div>
-    <div th:unless="${bestMatch==null}">
+    <div align="center" th:unless="${bestMatch==null}">
         <h3>Korisnik sa kojim se najvise slazete:<bold th:text="${bestMatch.getIme()}"></bold><bold th:text="${bestMatch.getPrezime()}"></bold></h3>
         <p>U kontakt sa korisnikom mozete pristupiti preko <a href="#" th:href="@{/}">chata</a> ili preko emaila.</p>
         <p>Email: <bold th:text="${bestMatch.getEmail()}"></bold></p>

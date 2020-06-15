@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <title>Brisanje jezika</title>
 </head>
-<body>
+<body style="background-image: url(/images/nice.jpg); background-repeat: no-repeat;background-size: cover;">
 <header th:insert="fragments.html :: nav"></header>
-<div class="form-group">
+<div align="center" style="color:white;" class="form-group">
     <form action="#" th:action="@{/brisanjeJezika/post}" th:object="${jezici}"  method="post">
         <label>Izaberite jezike</label><br>
         <table>
@@ -19,8 +19,8 @@
                 </td>
             </tr>
         </table>
-        <div class="form-group">
-            <input type="submit" value="Potvrdite brisanje jezika">
+        <div align="center" class="form-group">
+            <input class="btn btn-danger" type="submit" value="Potvrdite brisanje jezika">
         </div>
     </form>
 </div>

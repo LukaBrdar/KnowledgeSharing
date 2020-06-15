@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <title>Dodavanje novih jezika</title>
 </head>
-<body>
+<body style="background-color: LightGrey;">
 <header th:insert="fragments.html :: nav"></header>
+<div align = "center">
 <table class="table table-bordered">
     <thead>
     <tr  align="center">
@@ -18,5 +19,6 @@
     </tr>
 </table>
 <a class="btn btn-primary" th:href="@{/admin/dodavanjeJezika}">Dodajte novi jezik</a>
+</div>
 </body>
 </html>

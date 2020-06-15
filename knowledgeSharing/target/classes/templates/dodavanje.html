@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <title>Dodavanje novih oblasti i jezika</title>
 </head>
-<body>
+<body style="background-color: LightGrey;">
 <header th:insert="fragments.html :: nav"></header>
-<div class="container">
+<div align = "center" class="container">
     <h1>Dodavanje nove oblasti</h1>
     <form action="#" th:action="@{/admin/dodavanje/post}" th:object="${oblast}" method="post" th:align="center">
         <div class="form-group">
             <label>Naziv oblasti:</label>
             <input type="text" th:field="*{naziv}" placeholder="Naziv oblasti" class="form-control" required oninvalid="this.setCustomValidity('Ovo polje je obavezno')"
-                   oninput="this.setCustomValidity('')" onautocomplete="this.setCustomValidity('')" onchange="this.setCustomValidity('')"  style="width: 280%">
-            <input type="submit" value="Dodajte novu oblast">
+                   oninput="this.setCustomValidity('')" onautocomplete="this.setCustomValidity('')" onchange="this.setCustomValidity('')" >
+            <br><input class="btn btn-primary" type="submit" value="Dodajte novu oblast">
         </div>
     </form>
 </div>
