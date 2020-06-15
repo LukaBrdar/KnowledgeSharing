@@ -15,7 +15,7 @@
         <h3 class="danger">Za sada nema korisnika koji odgovara vama</h3>
     </div>
     <div align="center" th:unless="${bestMatch==null}">
-        <h3>Korisnik sa kojim se najvise slazete:<bold th:text="${bestMatch.getIme()}"></bold><bold th:text="${bestMatch.getPrezime()}"></bold></h3>
+        <h3>Korisnik sa kojim se najvise slazete:<bold th:text="${bestMatch.getIme()}"></bold>&nbsp;<bold th:text="${bestMatch.getPrezime()}"></bold></h3>
         <p>U kontakt sa korisnikom mozete pristupiti preko <a href="#" th:href="@{/}">chata</a> ili preko emaila.</p>
         <p>Email: <bold th:text="${bestMatch.getEmail()}"></bold></p>
 

@@ -47,7 +47,7 @@ public class AuthentificationController
 
         }
         modelAndView.addObject("korisnik", new Korisnik());
-        modelAndView.setViewName("register");
+        modelAndView.setViewName("login");
         return modelAndView;
     }
 
